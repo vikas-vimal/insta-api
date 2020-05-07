@@ -1,7 +1,11 @@
+if (!process.env.now) require("dotenv").config();
+
 const express = require('express');
 const cors = require("cors");
 const fetch = require('node-fetch');
 const app = express();
+
+const port = process.env.now ? 8080 : 4000;
 
 app.use(cors());
 app.use(express.json());
@@ -127,6 +131,4 @@ async function getPosts(profile){
 
 
 
-app.listen(5000, ()=>{
-	console.log("Server started at http://localhost:5000");
-});
+app.listen(port);

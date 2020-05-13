@@ -2,8 +2,20 @@
 	"version":2,
 	"builds":[
 		{
-			"src":"*.js",
+			"src":"index.js",
 			"use":"@now/node-server"
+		}
+	],
+	"routes":[
+		{
+			"src": "/profile",
+			"dest": "/index.js",
+			"methods": ["POST"]
+		},
+		{
+			"src": "/posts",
+			"dest": "/index.js",
+			"methods": ["POST"]
 		}
 	]
 }

@@ -8,6 +8,11 @@
 	],
 	"routes":[
 		{
+			"src": "/",
+			"dest": "/index.js",
+			"methods": ["GET","POST"]
+		},
+		{
 			"src": "/profile",
 			"dest": "/index.js",
 			"methods": ["POST"]

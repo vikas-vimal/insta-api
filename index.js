@@ -5,18 +5,29 @@ const cors = require("cors");
 const fetch = require('node-fetch');
 const app = express();
 
-const port = process.env.now ? 8080 : 4000;
+const PORT = process.env.now ? 8080 : 4000;
 
 app.use(cors());
 app.use(express.json());
 
-let alerts=[];
-let errors=[];
 
 
+app.get('/', (req,res,next)=>{
+	// throw new Error("Something went wrong...");
+	res.json({
+		message:'Heyy there! 🤘🏻😎'
+	});
+});
+
+app.post('/', (req,res,next)=>{
+	// throw new Error("Something went wrong...");
+	res.json({
+		message:'Heyy there! 🤘🏻😎'
+	});
+});
 
 
-app.post('/posts/', (req,res)=>{
+app.post('/posts', (req,res)=>{
 
 	const next_cursor = (!req.body.next)? '' : '&after='+req.body.next.toString().trim();
 	let posts_api = 'https://www.instagram.com/graphql/query/?query_id=17888483320059182';
@@ -79,32 +90,13 @@ app.post('/posts/', (req,res)=>{
 });
 
 
-app.post('/profile/', (req,res)=>{
+app.post('/profile', (req,res)=>{
 
 	v2_FetchProfile(req.body.username)
 		.then(r=>res.json(r))
 		.catch(err=>res.json({error: "Something went wrong!"}));
 
 });
-
-
-
-
-
-app.get('/', (req,res)=>{
-	res.json({
-		message:'Heyy there! 🤘🏻😎'
-	});
-});
-
-app.post('/', (req,res)=>{
-	res.json({
-		message:'Heyy there! 🤘🏻😎'
-	});
-});
-
-
-
 
 
 
@@ -137,4 +129,13 @@ async function v2_FetchProfile(raw_username){
 	}
 }
 
-app.listen(port);
+
+app.use((req,res,next)=>{
+	res.status(404).send({
+		status:404,
+		error:'Not found!'
+	});
+});
+
+
+app.listen(PORT);

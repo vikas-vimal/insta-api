@@ -10,17 +10,29 @@
 		{
 			"src": "/",
 			"dest": "/index.js",
-			"methods": ["GET","POST"]
+			"methods": ["GET","POST"],
+			"headers": {
+				"Access-Control-Allow-Headers": "*",
+				"Access-Control-Allow-Origin": "*"
+			 }
 		},
 		{
 			"src": "/profile",
 			"dest": "/index.js",
-			"methods": ["POST"]
+			"methods": ["POST"],
+			"headers": {
+				"Access-Control-Allow-Headers": "*",
+				"Access-Control-Allow-Origin": "*"
+			 }
 		},
 		{
 			"src": "/posts",
 			"dest": "/index.js",
-			"methods": ["POST"]
+			"methods": ["POST"],
+			"headers": {
+				"Access-Control-Allow-Headers": "*",
+				"Access-Control-Allow-Origin": "*"
+			 }
 		}
 	]
 }
